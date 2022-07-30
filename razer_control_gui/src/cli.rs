@@ -26,6 +26,7 @@ fn print_help(reason: &str) -> ! {
     println!("  -> 'static' - PARAMS: <Red> <Green> <Blue>");
     println!("  -> 'static_gradient' - PARAMS: <Red1> <Green1> <Blue1> <Red2> <Green2> <Blue2>");
     println!("  -> 'wave_gradient' - PARAMS: <Red1> <Green1> <Blue1> <Red2> <Green2> <Blue2>");
+    println!("  -> 'wave_gradient_3' - PARAMS: <Red1> <Green1> <Blue1> <Red2> <Green2> <Blue2> <Red3> <Green3> <Blue3> <Interval>");
     println!("  -> 'breathing_single' - PARAMS: <Red> <Green> <Blue> <Duration_ms/100>");
     std::process::exit(ret_code);
 }
@@ -105,6 +106,11 @@ fn write_effect(opt: Vec<String>) {
         }
         "breathing_single" => {
             if params.len() != 4 { print_help("Breathing single requires 4 args") }
+            send_effect(name.to_ascii_lowercase(), params)
+        }
+
+        "wave_gradient_3" => {
+            if params.len() != 10 { print_help("Wave_3 requires 9 args")}
             send_effect(name.to_ascii_lowercase(), params)
         }
         _ => print_help(format!("Unrecognised effect name: `{}`", name).as_str())

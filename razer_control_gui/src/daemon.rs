@@ -176,6 +176,7 @@ pub fn process_client_request(cmd: comms::DaemonCommand) -> Option<comms::Daemon
                     "static_gradient" => Some(kbd::effects::StaticGradient::new(params)),
                     "wave_gradient" => Some(kbd::effects::WaveGradient::new(params)),
                     "breathing_single" => Some(kbd::effects::BreathSingle::new(params)),
+                    "wave_gradient_3" => Some(kbd::effects::WaveGradient_3::new(params)),
                     _ => None
                 };
 
